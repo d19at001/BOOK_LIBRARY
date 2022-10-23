@@ -1,0 +1,25 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+  {% if book_list %}
+    <div class="container">
+      <div class="row">
+        {% for book in book_list %}
+          <div class="col-sm">
+            <div class="card" style="width: 18rem;">
+              <img src={{ book.image.url }} class="card-img-top" width="500" height="400">
+              <div class="card-body">
+                
+                <p class="card-text">Author : {{book.author}}</p>
+                <a href="{{ book.get_absolute_url }}" class="btn btn-primary">Show detail</a>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  {% else %}
+    <p>There are no books in the library.</p>
+  {% endif %}
+{% endblock %}
